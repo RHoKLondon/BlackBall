@@ -73,3 +73,11 @@ textarea
 {
     display: none;
 }
+
+.registerButton
+{
+    font-size: larger;
+    background-color: Black;
+    color: Yellow;
+    text-align: center;
+}

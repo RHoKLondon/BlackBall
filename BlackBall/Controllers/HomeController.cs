@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using BlackBall.Models;
 
 namespace BlackBall.Controllers
 {
@@ -10,6 +11,11 @@ namespace BlackBall.Controllers
     {
         public ActionResult Index()
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Dashboard");
+            }
+
             return View();
         }
 
@@ -19,7 +25,7 @@ namespace BlackBall.Controllers
         }
 
         [HttpPost]
-        public ActionResult Register(FormCollection formData)
+        public ActionResult Register(User user, FormCollection formData)
         {
             return View();
         }
