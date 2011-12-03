@@ -69,6 +69,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\BlackBallDatabase.cs" />
     <Compile Include="Models\InflowItem.cs" />
     <Compile Include="Models\OutflowItem.cs" />
     <Compile Include="Models\RecurrencePattern.cs" />
