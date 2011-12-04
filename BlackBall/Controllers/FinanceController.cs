@@ -14,29 +14,62 @@ namespace BlackBall.Controllers
 
         public ActionResult Dashboard()
         {
-            return View();
+            var model = db.Users.Single(x => x.EmailAddress == this.User.Identity.Name);
+            return View(model);
         }
 
         public ActionResult AddInflowItem()
         {
-            return View();
+            var model = new InflowItem();
+            return View(model);
         }
 
         [HttpPost]
-        public ActionResult AddInflowItem(FormCollection formData)
+        public ActionResult AddInflowItem(InflowItem model, FormCollection formData)
         {
-            return View();
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            try
+            {
+                var user = db.Users.Single(x => x.EmailAddress == this.User.Identity.Name);
+                user.Inflow.Add(model);
+                db.SaveChanges();
+                return RedirectToAction("Dashboard");
+            }
+            catch
+            {
+                return View(model);
+            }
         }
 
         public ActionResult AddOutflowItem()
         {
-            return View();
+            var model = new OutflowItem();
+            return View(model);
         }
 
         [HttpPost]
-        public ActionResult AddOutflowItem(FormCollection formData)
+        public ActionResult AddOutflowItem(OutflowItem model, FormCollection formData)
         {
-            return View();
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            try
+            {
+                var user = db.Users.Single(x => x.EmailAddress == this.User.Identity.Name);
+                user.Outflow.Add(model);
+                db.SaveChanges();
+                return RedirectToAction("Dashboard");
+            }
+            catch
+            {
+                return View(model);
+            }
         }
     }
 }

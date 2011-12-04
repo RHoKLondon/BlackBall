@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using BlackBall.Models;
+using System.Net.Mail;
 
 namespace BlackBall.Controllers
 {
@@ -26,13 +27,35 @@ namespace BlackBall.Controllers
 
         public ActionResult Contact()
         {
-            return View();
+            var model = new ContactViewModel();
+            model.RenderTime = DateTime.Now.ToUniversalTime();
+            return View(model);
         }
 
         [HttpPost]
-        public ActionResult Contact(FormCollection formData)
+        public ActionResult Contact(ContactViewModel model)
         {
-            return View();
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            if (DateTime.Now.ToUniversalTime() - model.RenderTime < TimeSpan.FromSeconds(3))
+            {
+                return View(model);
+            }
+
+            try
+            {
+                var mailer = new Mailer();
+                mailer.SendMail(model.SendersName, model.SendersEmailAddress, "240 Hours", "info@240hours.com", "Message From Website", model.Body);
+            }
+            catch (SmtpException)
+            {
+                return View("ContactFailure");
+            }
+
+            return View("ContactSuccess");
         }
                     }
 }
