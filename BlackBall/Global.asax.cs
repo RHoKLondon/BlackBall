@@ -7,10 +7,7 @@ using System.Web.Routing;
 
 namespace BlackBall
 {
-    // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
-    // visit http://go.microsoft.com/?LinkId=9394801
-
-    public class MvcApplication : System.Web.HttpApplication
+    public class MvcApplication : HttpApplication
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
@@ -21,12 +18,17 @@ namespace BlackBall
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            routes.MapRoute(
-                "Default", // Route name
-                "{controller}/{action}/{id}", // URL with parameters
-                new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
-            );
+            routes.MapRoute(name: "Home", url: "", defaults: new { controller = "Home", action = "Index" });
+            routes.MapRoute(name: "About", url: "about", defaults: new { controller = "Home", action = "About" });
+            routes.MapRoute(name: "Contact", url: "contact", defaults: new { controller = "Home", action = "Contact" });
 
+            routes.MapRoute(name: "Register", url: "register", defaults: new { controller = "Account", action = "Register" });
+            routes.MapRoute(name: "LogIn", url: "login", defaults: new { controller = "Account", action = "LogIn" });
+            routes.MapRoute(name: "LogOut", url: "logout", defaults: new { controller = "Account", action = "LogOut" });
+            
+            routes.MapRoute(name: "Dashboard", url: "dashboard", defaults: new { controller = "Finance", action = "Dashboard" });
+            routes.MapRoute(name: "AddInflowItem", url: "inflow/add", defaults: new { controller = "Finance", action = "AddInflowItem" });
+            routes.MapRoute(name: "AddOutflowItem", url: "outflow/add", defaults: new { controller = "Finance", action = "AddOutflowItem" });
         }
 
         protected void Application_Start()
