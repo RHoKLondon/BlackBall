@@ -3,3 +3,19 @@
 
 <h2>@Model.Name</h2>
 
+<table>
+<thead>
+<tr><th>Date</th><th>Inflow</th><th>Outflow</th><th>Current Status</th></tr>
+</thead>
+
+<tbody>
+
+@foreach (dynamic d in Model.GetInflowAndOutflow())
+{
+    <tr><td>@d.Date</td><td>@(d.Inflow == 0 ? "" : d.Inflow)</td><td>@(d.Outflow == 0 ? "" : d.Outflow)</td><td>@Math.Ceiling(@d.CurrentStatus)</td></tr>
+}
+
+</tbody>
+</table>
+
+<p>Add another item to your monthly @Html.ActionLink("Inflow", "AddInflowItem", "Finance") or @Html.ActionLink("Outflow", "AddOutflowItem", "Finance").</p>

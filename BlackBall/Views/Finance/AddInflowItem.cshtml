@@ -1,6 +1,32 @@
 ﻿@model BlackBall.Models.InflowItem
 @{ ViewBag.Title = "Add Inflow"; }
 
-<h2>Add Inflow</h2>
+<h2>Add an Entry to Your Inflow</h2>
 
-@Html.EditorForModel()
+@{ Html.BeginForm(); }
+<p>
+@Html.LabelFor(x => x.Name)
+@Html.EditorFor(x => x.Name)
+@Html.ValidationMessageFor(x => x.Name)
+</p>
+
+<p>
+@Html.LabelFor(x => x.Amount)
+@Html.EditorFor(x => x.Amount)
+@Html.ValidationMessageFor(x => x.Amount)
+</p>
+
+<p>
+@Html.LabelFor(x => x.Monthly)
+@Html.EditorFor(x => x.Monthly)
+@Html.ValidationMessageFor(x => x.Monthly)
+</p>
+
+<p>
+@Html.LabelFor(x => x.DayOfMonth)
+@Html.EditorFor(x => x.DayOfMonth)
+@Html.ValidationMessageFor(x => x.DayOfMonth)
+</p>
+
+<input type="submit" value="Add" />
+@{ Html.EndForm(); }

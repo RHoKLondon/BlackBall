@@ -1,6 +1,50 @@
 ﻿@model BlackBall.Models.OutflowItem
 @{ ViewBag.Title = "Add Outflow"; }
 
-<h2>Add Outflow</h2>
+<h2>Add an Entry to Your Outflow</h2>
 
-@Html.EditorForModel()
+@{ Html.BeginForm(); }
+<p>
+@Html.LabelFor(x => x.Name)
+@Html.EditorFor(x => x.Name)
+@Html.ValidationMessageFor(x => x.Name)
+</p>
+
+<p>
+@Html.LabelFor(x => x.Notes)
+@Html.EditorFor(x => x.Notes)
+@Html.ValidationMessageFor(x => x.Notes)
+</p>
+
+<p>
+@Html.LabelFor(x => x.HighPriority)
+@Html.EditorFor(x => x.HighPriority)
+@Html.ValidationMessageFor(x => x.HighPriority)
+</p>
+
+<p>
+@Html.LabelFor(x => x.AmountDue)
+@Html.EditorFor(x => x.AmountDue)
+@Html.ValidationMessageFor(x => x.AmountDue)
+</p>
+
+<p>
+@Html.LabelFor(x => x.AmountOwed)
+@Html.EditorFor(x => x.AmountOwed)
+@Html.ValidationMessageFor(x => x.AmountOwed)
+</p>
+
+<p>
+@Html.LabelFor(x => x.Monthly)
+@Html.EditorFor(x => x.Monthly)
+@Html.ValidationMessageFor(x => x.Monthly)
+</p>
+
+<p>
+@Html.LabelFor(x => x.DayOfMonth)
+@Html.EditorFor(x => x.DayOfMonth)
+@Html.ValidationMessageFor(x => x.DayOfMonth)
+</p>
+
+<input type="submit" value="Add" />
+@{ Html.EndForm(); }

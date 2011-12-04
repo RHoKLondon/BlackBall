@@ -17,14 +17,17 @@ namespace BlackBall.Models
         [Display(Name = "Your email address:")]
         [Required(ErrorMessage = "Email address is required")]
         [RegularExpression(@"^[\w-]+(\.[\w-]+)*@([a-z0-9-]+(\.[a-z0-9-]+)*?\.[a-z]{2,6}|(\d{1,3}\.){3}\d{1,3})(:\d{4})?$", ErrorMessage = "Please enter a valid email address")]
+        [DataType(DataType.EmailAddress)]
         public string EmailAddress { get; set; }
 
         [Display(Name = "Choose a password:")]
         [Required(ErrorMessage = "Password is required")]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
 
         [Display(Name = "Retype your password:")]
         [Required(ErrorMessage = "Password confirmation is required")]
+        [DataType(DataType.Password)]
         public string PasswordConfirmation { get; set; }
 
         [Display(Name = "Your mobile phone number (so we can text you reminders):")]
