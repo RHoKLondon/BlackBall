@@ -1,0 +1,15 @@
+﻿@model BlackBall.Models.ContactForm
+           @{ ViewBag.Title = "Contact"; }
+
+<h2>Contact Us</h2>
+
+<p>Feel free to contact us using the form below. We appreciate your feedback.</p>
+
+@{ Html.BeginForm(); }
+@Html.EditorForModel()
+
+<p>
+<input type="submit" value="Send" />
+</p>
+@{ Html.EndForm(); }
+
