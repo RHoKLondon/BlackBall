@@ -11,28 +11,28 @@ namespace BlackBall.Controllers
     {
         public ActionResult Index()
         {
-            if (User.Identity.IsAuthenticated)
+            if (this.User.Identity.IsAuthenticated)
             {
-                return RedirectToAction("Dashboard");
+                return RedirectToAction("Dashboard", "Finance");
             }
 
             return View();
         }
 
-        public ActionResult Register()
+        public ActionResult About()
+        {
+            return View();
+        }
+
+        public ActionResult Contact()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult Register(User user, FormCollection formData)
+        public ActionResult Contact(FormCollection formData)
         {
             return View();
         }
-
-        public ActionResult Dashboard()
-        {
-            return View();
-        }
-    }
+                    }
 }
