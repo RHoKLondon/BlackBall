@@ -1,5 +1,21 @@
 ﻿@{ ViewBag.Title = "Home"; }
 
+@if (!User.Identity.IsAuthenticated)
+{
+    <div id="login">
+    @{ Html.BeginForm("LogIn", "Account"); }
+    <h2>Log In</h2>
+    <p>
+    @Html.Label("emailAddress", "Email address:")
+    @Html.TextBox("emailAddress")
+    @Html.Label("password", "Password:")
+    @Html.Password("password")
+    <input type="submit" value="Log In" />
+    </p>
+    @{ Html.EndForm(); }
+    </div>
+}
+
 <p>Blackball is a free debt management tool that empowers people to be more in control of their debts.  Our on-line or SMS text calendar reminders allows you to get on with day to day activities and achieve your financial or life goals.  Before those red letters arrive or the due dates on your next bill arrives, Blackball allows you to plan and imortantly prioritise your debts.</p>
 
 <h2>How Does it Work?</h2>

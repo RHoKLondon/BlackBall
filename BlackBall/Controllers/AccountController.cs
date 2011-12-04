@@ -63,7 +63,6 @@ namespace BlackBall.Controllers
         }
 
         [Authorize]
-        [HttpPost]
         public ActionResult LogOut()
         {
             FormsAuthentication.SignOut();
